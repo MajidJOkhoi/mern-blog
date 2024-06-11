@@ -20,3 +20,8 @@ body.dark-mode .navbar a {
 body.dark-mode .navbar a {
   color: #f8f9fa;
 }
+
+/* Custom CSS */
+.text-input {
+  transition: width 0.3s ease;
+}
