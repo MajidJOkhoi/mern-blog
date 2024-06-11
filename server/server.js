@@ -2,6 +2,8 @@ const express = require("express");
 const connectDB = require("./config/db");
 const dotenv = require("dotenv");
 const userRoutes = require("./routes/userRoutes");
+const authRoutes = require("./routes/authRoutes");
+const errorHandler = require('./middleware/errorHandler');
 
 dotenv.config();
 
@@ -15,6 +17,11 @@ app.use(express.json({ extended: false }));
 
 // Define Routes
 app.use("/api/user", userRoutes);
+app.use("/api/auth", authRoutes);
+
+// Use the custom error handler middleware
+app.use(errorHandler);
+
 
 const PORT = process.env.PORT || 5000;
 
