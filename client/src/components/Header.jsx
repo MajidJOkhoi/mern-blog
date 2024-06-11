@@ -19,25 +19,27 @@ export function Header() {
   };
 
   return (
-    <Navbar fluid rounded className="p-4 bg-gradient-to-r from-blue-500 to-teal-500 border-b-2 rounded-sm shadow-sm">
+    <Navbar
+      fluid
+      rounded
+      className="p-4 bg-gradient-to-r from-blue-500 to-teal-500 border-b-2 rounded-sm shadow-sm"
+    >
       <div className="container mx-auto flex items-center justify-between">
         {/* Left Side: Logo */}
         <div className="flex items-center space-x-4">
           <Link
             to="/"
-            className="text-2xl font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent"
+            className="text-3xl font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent animate-gradient"
           >
             Majid Ali
           </Link>
         </div>
 
-      
-
-         {/* Search Bar with Icon */}
-         <div className="relative flex items-center flex-grow space-x-4 hidden md:flex">
+        {/* Search Bar with Icon */}
+        <div className="relative flex items-center flex-grow space-x-4 hidden md:flex">
           <TextInput
             type="text"
-            placeholder="Search..."
+            placeholder="Search ......"
             className="flex-grow p-2 rounded-md dark:bg-gray-700 dark:border-gray-600"
             rightIcon={AiOutlineSearch}
           />
@@ -60,8 +62,15 @@ export function Header() {
 
         {/* Hamburger Menu Icon */}
         <div className="flex md:hidden">
-          <button onClick={toggleMenu} className="text-gray-800 dark:text-gray-300">
-            {isOpen ? <AiOutlineClose size={24} /> : <AiOutlineMenu size={24} />}
+          <button
+            onClick={toggleMenu}
+            className="text-gray-800 dark:text-gray-300"
+          >
+            {isOpen ? (
+              <AiOutlineClose size={24} />
+            ) : (
+              <AiOutlineMenu size={24} />
+            )}
           </button>
         </div>
       </div>
@@ -78,7 +87,13 @@ export function Header() {
               placeholder="Search..."
               className="w-full p-2 rounded-md dark:bg-gray-700 dark:border-gray-600"
             />
-            <Button outline gradientDuoTone="cyanToBlue" as={Link} to="/sign-up" onClick={toggleMenu}>
+            <Button
+              outline
+              gradientDuoTone="cyanToBlue"
+              as={Link}
+              to="/sign-up"
+              onClick={toggleMenu}
+            >
               Sign Up
             </Button>
             <DarkThemeToggle onClick={toggleDarkMode} />
