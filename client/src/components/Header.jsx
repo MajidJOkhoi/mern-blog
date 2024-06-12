@@ -22,7 +22,7 @@ export function Header() {
     <Navbar
       fluid
       rounded
-      className="p-4 bg-gradient-to-r from-blue-500 to-teal-500 border-b-2 rounded-sm shadow-sm"
+      className="p-4 bg-gradient-to-r from-blue-500 to-teal-500 border-b-1 rounded-sm shadow-sm"
     >
       <div className="container mx-auto flex items-center justify-between">
         {/* Left Side: Logo */}

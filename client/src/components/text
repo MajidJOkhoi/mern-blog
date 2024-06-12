@@ -1,0 +1,80 @@
+"use client";
+
+import { Link } from "react-router-dom";
+import { Footer as FlowbiteFooter } from "flowbite-react";
+import { BsFacebook, BsGithub, BsInstagram, BsLinkedin, BsTwitter } from "react-icons/bs";
+
+const Footer = () => {
+  return (
+    <FlowbiteFooter container className="border-t-8 border-teal-500 py-8 bg-gray-800 text-white">
+      <div className="w-full">
+        <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
+          <div>
+            <Link to="/">
+              <FlowbiteFooter.Brand
+                src="https://flowbite.com/docs/images/logo.svg"
+                alt="Majid Ali Logo"
+                name="Majid Ali"
+              />
+            </Link>
+          </div>
+          <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
+            <div>
+              <FlowbiteFooter.Title title="About" />
+              <FlowbiteFooter.LinkGroup col>
+                <Link to="/about" className="hover:underline">
+                  About
+                </Link>
+                <Link to="#" className="hover:underline">
+                  Majid Blog
+                </Link>
+              </FlowbiteFooter.LinkGroup>
+            </div>
+            <div>
+              <FlowbiteFooter.Title title="Follow Us" />
+              <FlowbiteFooter.LinkGroup col>
+                <a href="https://github.com/MajidJOkhoi" className="hover:underline">
+                  GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/majidali513/" className="hover:underline">
+                  LinkedIn
+                </a>
+              </FlowbiteFooter.LinkGroup>
+            </div>
+            <div>
+              <FlowbiteFooter.Title title="Privacy Policy" />
+              <FlowbiteFooter.LinkGroup col>
+                <Link to="#" className="hover:underline">
+                  Privacy Policy
+                </Link>
+              </FlowbiteFooter.LinkGroup>
+            </div>
+          </div>
+        </div>
+        <FlowbiteFooter.Divider className="my-8 border-gray-600" />
+        <div className="w-full sm:flex sm:items-center sm:justify-between">
+          <FlowbiteFooter.Copyright href="#" by="Professor" year={2024} />
+          <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
+            <a href="https://twitter.com/your-profile" target="_blank" rel="noopener noreferrer">
+              <BsTwitter className="w-6 h-6 text-gray-400 hover:text-white" />
+            </a>
+            <a href="https://facebook.com/your-profile" target="_blank" rel="noopener noreferrer">
+              <BsFacebook className="w-6 h-6 text-gray-400 hover:text-white" />
+            </a>
+            <a href="https://instagram.com/your-profile" target="_blank" rel="noopener noreferrer">
+              <BsInstagram className="w-6 h-6 text-gray-400 hover:text-white" />
+            </a>
+            <a href="https://github.com/MajidJOkhoi" target="_blank" rel="noopener noreferrer">
+              <BsGithub className="w-6 h-6 text-gray-400 hover:text-white" />
+            </a>
+            <a href="https://www.linkedin.com/in/majidali513/" target="_blank" rel="noopener noreferrer">
+              <BsLinkedin className="w-6 h-6 text-gray-400 hover:text-white" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </FlowbiteFooter>
+  );
+};
+
+export default Footer;
