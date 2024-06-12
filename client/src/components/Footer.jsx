@@ -4,7 +4,7 @@ import { BsFacebook, BsGithub, BsLinkedin, BsTwitter, BsInstagram } from "react-
 
 const Footer = () => {
   return (
-    <FlowbiteFooter container className="border-t-8 border-teal-500 py-8">
+    <FlowbiteFooter container className=" border-t-4 border-teal-500 py-8">
       <div className="w-full text-center">
         <div className="w-full flex flex-col md:flex-row justify-between items-center">
           <Link

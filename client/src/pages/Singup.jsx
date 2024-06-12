@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { toast ,ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { Button, Label, TextInput } from "flowbite-react";
 import { Link } from "react-router-dom";
+import { signUp } from "../redux/user/authSlice";
+import "react-toastify/dist/ReactToastify.css";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -11,8 +13,10 @@ const Signup = () => {
     email: "",
     password: "",
   });
-  const [error, setError] = useState("");
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { loading, error } = useSelector((state) => state.auth);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -20,18 +24,16 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post("http://localhost:3000/api/auth/signup", formData);
-      if (response.data) {
-        toast.success(" User Registred successfull ...");
+    dispatch(signUp(formData)).then((response) => {
+      if (!response.error) {
+        toast.success('User registered successfully!');
         setTimeout(() => {
-          navigate("/sign-in");
-        }, 2000);
+          navigate('/sign-in');
+        }, 2000); // Redirect after 2 seconds
+      } else {
+        toast.error(response.error.message || 'Sign up failed. Please check your credentials.');
       }
-    } catch (err) {
-      setError(err.response.data.message || "Something went wrong!");
-      toast.error(error);
-    }
+    });
   };
 
   return (
@@ -53,7 +55,9 @@ const Signup = () => {
             <h2 className="text-2xl mb-2 text-bold text-center">Sign Up</h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
-                <Label htmlFor="username" className="block mb-2">Username</Label>
+                <Label htmlFor="username" className="block mb-2">
+                  Username
+                </Label>
                 <TextInput
                   type="text"
                   id="username"
@@ -65,7 +69,9 @@ const Signup = () => {
                 />
               </div>
               <div className="mb-4">
-                <Label htmlFor="email" className="block mb-2">Email</Label>
+                <Label htmlFor="email" className="block mb-2">
+                  Email
+                </Label>
                 <TextInput
                   type="email"
                   id="email"
@@ -77,7 +83,9 @@ const Signup = () => {
                 />
               </div>
               <div className="mb-4">
-                <Label htmlFor="password" className="block mb-2">Password</Label>
+                <Label htmlFor="password" className="block mb-2">
+                  Password
+                </Label>
                 <TextInput
                   type="password"
                   id="password"
@@ -90,19 +98,21 @@ const Signup = () => {
               </div>
               <div className="flex items-center justify-center mb-4">
                 <Button gradientDuoTone="purpleToBlue" type="submit" className="w-full">
-                  Sign Up
+                  {loading ? 'Signing Up...' : 'Sign Up'}
                 </Button>
               </div>
               <div className="mt-3">
-                Already have an account?{" "}
-                <Link to="/sign-in" className="text-blue-500 hover:underline">Sign In</Link>
+                Already have an account?{' '}
+                <Link to="/sign-in" className="text-blue-500 hover:underline">
+                  Sign In
+                </Link>
               </div>
             </form>
             {error && <p className="text-red-500 mt-2">{error}</p>}
           </div>
         </div>
       </div>
-      <ToastContainer/>
+      <ToastContainer />
     </>
   );
 };
