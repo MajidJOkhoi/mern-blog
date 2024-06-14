@@ -6,6 +6,7 @@ import { Button, Label, TextInput } from "flowbite-react";
 import { Link } from "react-router-dom";
 import { signUp } from "../redux/user/authSlice";
 import "react-toastify/dist/ReactToastify.css";
+import OAuth from "../components/OAuth";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -101,6 +102,9 @@ const Signup = () => {
                   {loading ? 'Signing Up...' : 'Sign Up'}
                 </Button>
               </div>
+                <div className="mt-3">
+                  <OAuth />
+                </div>
               <div className="mt-3">
                 Already have an account?{' '}
                 <Link to="/sign-in" className="text-blue-500 hover:underline">

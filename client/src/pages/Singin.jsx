@@ -6,6 +6,7 @@ import { Button, Label, TextInput } from "flowbite-react";
 import { Link } from "react-router-dom";
 import { signIn } from "../redux/user/authSlice";
 import "react-toastify/dist/ReactToastify.css";
+import OAuth from "../components/OAuth";
 
 const Signin = () => {
   const [formData, setFormData] = useState({
@@ -76,11 +77,16 @@ const Signin = () => {
                   {loading ? 'Signing In...' : 'Sign In'}
                 </Button>
               </div>
+                <div className="mt-3">
+                  <OAuth />
+                </div>
               <div className="mt-3">
                 Don't have an account?{' '}
                 <Link to="/sign-up" className="text-blue-500 hover:underline">
                   Sign Up
                 </Link>
+
+               
               </div>
             </form>
             {error && <p className="text-red-500 mt-2">{error}</p>}

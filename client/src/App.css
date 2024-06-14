@@ -1,29 +1,87 @@
+/* Base Styles for Dark Mode */
 body.dark-mode {
-  background-color: #333;
-  color: #f8f9fa;
+  background-color: #121212; /* Dark background */
+  color: #e0e0e0; /* Light text color */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body.dark-mode .navbar {
-  background-color: #444;
+  background-color: #1e1e1e; /* Slightly lighter dark for navbar */
+  transition: background-color 0.3s ease;
 }
 
 body.dark-mode .navbar a {
-  color: #f8f9fa;
+  color: #e0e0e0; /* Light text color for navbar links */
+  transition: color 0.3s ease;
 }
 
-.navbar a {
-  margin: 0 10px;
-  text-decoration: none;
-  color: #333;
+/* General Elements */
+body.dark-mode a {
+  color: #bb86fc; /* Light purple for links */
+  transition: color 0.3s ease;
 }
 
-body.dark-mode .navbar a {
-  color: #f8f9fa;
+body.dark-mode button {
+  background-color: #3700b3; /* Dark purple for buttons */
+  color: #e0e0e0; /* Light text color for buttons */
+  border: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Custom CSS */
-.text-input {
-  transition: width 0.3s ease;
+body.dark-mode input, body.dark-mode textarea {
+  background-color: #333;
+  color: #e0e0e0;
+  border: 1px solid #444;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
+body.dark-mode .text-input {
+  transition: width 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
 
+/* Flowbite Components */
+body.dark-mode .flowbite-navbar {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
+
+body.dark-mode .flowbite-navbar a {
+  color: #e0e0e0;
+}
+
+body.dark-mode .flowbite-button {
+  background-color: #3700b3;
+  color: #e0e0e0;
+}
+
+body.dark-mode .flowbite-text-input {
+  background-color: #333;
+  color: #e0e0e0;
+  border: 1px solid #444;
+}
+
+/* Additional Custom Styles */
+body.dark-mode .container {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .card {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  border: 1px solid #444;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark-mode .header {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .footer {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

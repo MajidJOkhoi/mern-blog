@@ -1,13 +1,17 @@
-"use client";
-
 import React, { useState } from "react";
-import { Navbar, TextInput, Button, DarkThemeToggle } from "flowbite-react";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Navbar, TextInput, Button, DarkThemeToggle, Dropdown, Avatar } from "flowbite-react";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineSearch, AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { logout } from "../redux/user/authSlice";
+import { toast } from "react-toastify";
 
 export function Header() {
   const [darkMode, setDarkMode] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const user = useSelector((state) => state.auth.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -16,6 +20,12 @@ export function Header() {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
+    toast.success('Logged out successfully!');
+    navigate('/sign-up');
   };
 
   return (
@@ -52,12 +62,27 @@ export function Header() {
           <NavLink to="/project" label="Project" />
         </div>
 
-        {/* Right Side: Dark Mode Toggle and Sign-Up Button */}
+        {/* Right Side: Dark Mode Toggle and Sign-Up Button or User Dropdown */}
         <div className="hidden md:flex items-center space-x-4">
           <DarkThemeToggle onClick={toggleDarkMode} />
-          <Button gradientDuoTone="purpleToBlue" as={Link} to="/sign-up">
-            Sign Up
-          </Button>
+          {user ? (
+            <Dropdown label={<Avatar img={user.photoURL} alt="User Avatar" rounded />}>
+              <Dropdown.Header>
+                <span className="block text-sm">{user.username}</span>
+                <span className="block text-sm font-medium truncate">{user.email}</span>
+              </Dropdown.Header>
+              <Link to={'/dashboard?tab=profile'}>
+                <Dropdown.Item>Profile</Dropdown.Item>
+              </Link>
+              <Dropdown.Divider />
+              <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+            </Dropdown>
+          ) : (
+            
+            <Button gradientDuoTone="purpleToBlue" as={Link} to="/sign-up">
+              Sign Up
+            </Button>
+          )}
         </div>
 
         {/* Hamburger Menu Icon */}
@@ -108,7 +133,7 @@ const NavLink = ({ to, label, onClick }) => (
   <Link
     to={to}
     onClick={onClick}
-    className="text-lg font-medium  hover:text-gray-300 transition duration-300 ease-in-out"
+    className="text-lg font-medium hover:text-gray-300 transition duration-300 ease-in-out"
   >
     {label}
   </Link>

@@ -15,7 +15,7 @@ const Footer = () => {
           </Link>
 
           <div className="flex flex-col md:flex-row md:space-x-10 mb-4 md:mb-0">
-            <div className="mb-4 md:mb-0">
+            <div className="mb-4 md:mb-0 pr-8">
               <FlowbiteFooter.Title title="About" />
               <FlowbiteFooter.LinkGroup col>
                 <FlowbiteFooter.Link href="/about">About</FlowbiteFooter.Link>
