@@ -29,7 +29,7 @@ const Signin = () => {
         toast.success('User signed in successfully');
         setTimeout(() => {
           navigate('/');
-        }, 2000);
+        }, 1000);
       } else {
         toast.error(response.error.message || 'Sign in failed. Please check your credentials.');
       }

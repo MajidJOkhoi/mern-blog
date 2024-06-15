@@ -30,7 +30,7 @@ const Signup = () => {
         toast.success('User registered successfully!');
         setTimeout(() => {
           navigate('/sign-in');
-        }, 2000); // Redirect after 2 seconds
+        }, 1000); // Redirect after 2 seconds
       } else {
         toast.error(response.error.message || 'Sign up failed. Please check your credentials.');
       }

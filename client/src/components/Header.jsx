@@ -63,10 +63,10 @@ export function Header() {
         </div>
 
         {/* Right Side: Dark Mode Toggle and Sign-Up Button or User Dropdown */}
-        <div className="hidden md:flex items-center space-x-4">
+        <div className="hidden md:flex items-center space-x-4 m-4">
           <DarkThemeToggle onClick={toggleDarkMode} />
           {user ? (
-            <Dropdown label={<Avatar img={user.photoURL} alt="User Avatar" rounded />}>
+            <Dropdown label={<Avatar img={user.photoURL} alt="User Avatar" rounded className="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500" />}>
               <Dropdown.Header>
                 <span className="block text-sm">{user.username}</span>
                 <span className="block text-sm font-medium truncate">{user.email}</span>
